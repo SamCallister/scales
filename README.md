@@ -6,3 +6,8 @@ npm install
 npm run dev
 ```
 Go to [localhost:8080](localhost:8080)
+
+## Build dist
+```
+npm run build
+```

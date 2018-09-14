@@ -2,12 +2,15 @@
 <html>
 	<head>
 		<script type="text/javascript" src="../node_modules/d3/dist/d3.js" charset="utf-8"></script>
+		<script type="text/javascript" src="../node_modules/d3-svg-legend/d3-legend.js" charset="utf-8"></script>
 	</head>
 	<body>
 		<script type="text/javascript" src="../bundle.js" charset="utf-8"></script>
-		Hello Old friend
-		<svg class="scale-svg" id="scale" viewBox="0 0 100 100">
-
-		</svg>
+		<div>
+			<svg id="legend"></svg>
+		</div>
+		<div>
+			<svg class="scale-svg" id="scale" viewBox="0 0 100 100" preserveAspectRatio="xMaxYMax slice"></svg>
+		</div>
 	</body>
 </html>
