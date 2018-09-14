@@ -5,7 +5,8 @@ require('../css/style.css');
 function Scale(options) {
 	this.svg = d3.select(options.scaleSelector);
 	this.legendInfo = options.legendInfo;
-
+	this.leftColor = options.leftColor;
+	this.rightColor = options.rightColor;
 	this.plankWidth = 80;
 	this.plankHeight = 4;
 	this.plankX = 10;
@@ -68,7 +69,7 @@ Scale.prototype.drawBlocks = function drawBlocks(leftPercent, rightPercent) {
 		return blocksList;
 	}
 
-	function draw(blockList, className) {
+	function draw(blockList, className, color) {
 		const blocks = self.plankGroup.selectAll(`rect.${className}`).data(blockList);
 
 		blocks.enter().append('rect')
@@ -84,7 +85,8 @@ Scale.prototype.drawBlocks = function drawBlocks(leftPercent, rightPercent) {
 			})
 			.attr('height', (d) => {
 				return d.height;
-			});
+			})
+			.attr('fill', color);
 	}
 
 	function addPercentText() {
@@ -125,14 +127,14 @@ Scale.prototype.drawBlocks = function drawBlocks(leftPercent, rightPercent) {
 
 		const legendScale = d3.scaleOrdinal()
 			.domain([self.legendInfo.leftSideLabel, self.legendInfo.rightSideLabel])
-			.range(['red', 'blue']);
+			.range([self.leftColor, self.rightColor]);
 
 		const legend = d3.legendColor()
 			.shapeWidth(10)
 			.shapeHeight(10)
 			.orient('vertical')
 			.scale(legendScale)
-			.title('wonderous things abound');
+			.title(self.legendInfo.legendTitle);
 
 		legendSvg.select('.legend')
 			.call(legend);
@@ -172,8 +174,8 @@ Scale.prototype.drawBlocks = function drawBlocks(leftPercent, rightPercent) {
 	const leftBlocksList = generateBlockData(leftNumBlocks, self.plankX);
 	const rightBlocksList = generateBlockData(rightNumBlocks, (self.plankWidth / 2) + self.plankX + self.blockWidth);
 
-	draw(leftBlocksList, 'block left-block');
-	draw(rightBlocksList, 'block right-block');
+	draw(leftBlocksList, 'block left-block', self.leftColor);
+	draw(rightBlocksList, 'block right-block', self.rightColor);
 
 	fadeInBlocks();
 	addPercentText();

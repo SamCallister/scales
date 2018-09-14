@@ -8,6 +8,8 @@ window.onload = function () {
 		scaleSelector: '#scale',
 		leftPercent: 0.8,
 		rightPercent: 0.2,
+		leftColor: 'green',
+		rightColor: 'blue',
 		legendInfo: {
 			legendSelector: '#legend',
 			legendTitle: 'Red vs Blue',

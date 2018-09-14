@@ -1,15 +1,8 @@
-.scale-svg {
-    width: 300px;
-    height: 300px;
-}
-
 .left-block {
-    fill: red;
     stroke: white;
 }
 
 .right-block {
-    fill: blue;
     stroke: white;
 }
 
