@@ -1,3 +1,5 @@
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
 module.exports = {
 	devtool: 'source-map',
 	entry: './src/js/devMain.js',
@@ -20,5 +22,15 @@ module.exports = {
 			}
 		]
 	},
+	plugins: [
+		new UglifyJSPlugin({
+			uglifyOptions: {
+				beautify: false,
+				ecma: 6,
+				compress: true,
+				comments: false
+			}
+		})
+	],
 	stats: { colors: true }
 };
